@@ -30,9 +30,9 @@ const Signup = () => {
   const handleSignup = async () => {
     try {
       setLoading(true);
-
+      //console.log(fullName, email);
       const response = await axios.post(`http://localhost:5000/auth/signup`, {
-        email,
+        fullName, email
       });
       toast({ description: response.data.message, variant: "default" });
       setIsOtpSent(true);
@@ -63,7 +63,7 @@ const Signup = () => {
           otp,
         }
       );
-      console.log(response.data);
+      //console.log(response.data);
       if (response.status === 200 || response.status === 201) {
         localStorage.setItem("userToken", response.data.user.token);
         toast({ description: response.data.message, variant: "default" });
